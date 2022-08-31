@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>决策规划模块 | lzq的博客</title><meta name="keywords" content="博客， 编程"><meta name="author" content="刘再庆"><meta name="copyright" content="刘再庆"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc]  决策规划  决策规划算法就是普通L2到什么都能做的L2一个重要模块  感知: 人的眼睛，耳朵 控制： 人的小脑，双脚 决策规划：人的大脑 功能越往上做，越复杂，越丰富，决策规划算法越重要，越难 在L4中决策规划模块可以说是最重要的，也是最复杂，最难做的模块    决策规划算法就是普通L2到什么都能做的L2的一个重要模块  整个决策规划模块一分为三  导航规划算法（业内叫全局路径规划算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策规划模块">
+<meta property="og:url" content="http://lzq04.github.io/blog1/post/0.html">
+<meta property="og:site_name" content="lzq的博客">
+<meta property="og:description" content="[toc]  决策规划  决策规划算法就是普通L2到什么都能做的L2一个重要模块  感知: 人的眼睛，耳朵 控制： 人的小脑，双脚 决策规划：人的大脑 功能越往上做，越复杂，越丰富，决策规划算法越重要，越难 在L4中决策规划模块可以说是最重要的，也是最复杂，最难做的模块    决策规划算法就是普通L2到什么都能做的L2的一个重要模块  整个决策规划模块一分为三  导航规划算法（业内叫全局路径规划算">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-08-31T03:08:03.333Z">
+<meta property="article:modified_time" content="2022-08-31T03:11:34.675Z">
+<meta property="article:author" content="刘再庆">
+<meta property="article:tag" content="博客， 编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/blog1/img/favicon.png"><link rel="canonical" href="http://lzq04.github.io/blog1/post/0"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog1/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog1/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '决策规划模块',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-31 11:11:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog1/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/blog1/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/blog1/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog1/">lzq的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">决策规划模块</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-31T03:08:03.333Z" title="发表于 2022-08-31 11:08:03">2022-08-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-31T03:11:34.675Z" title="更新于 2022-08-31 11:11:34">2022-08-31</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="决策规划模块"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[toc]</p>
+<hr>
+<h1 id="决策规划"><a href="#决策规划" class="headerlink" title="决策规划"></a>决策规划</h1><hr>
+<ul>
+<li>决策规划算法就是普通L2到什么都能做的L2一个重要模块</li>
+</ul>
+<p>感知: 人的眼睛，耳朵</p>
+<p>控制： 人的小脑，双脚</p>
+<p>决策规划：人的大脑</p>
+<p>功能越往上做，越复杂，越丰富，决策规划算法越重要，越难</p>
+<p>在L4中决策规划模块可以说是最重要的，也是最复杂，最难做的模块</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220822153242590.png" alt="image-20220822153242590"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220822153208953.png" alt="image-20220822153208953"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220822153410116.png" alt="image-20220822153410116"></p>
+<p>决策规划算法就是普通L2到什么都能做的L2的一个重要模块</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220822153636341.png" alt="image-20220822153636341"></p>
+<p>整个决策规划模块一分为三</p>
+<ol>
+<li><p>导航规划算法（业内叫全局路径规划算法），此算法将计算出地图上A到B的最优路径，此算法与机器人导航，手机导航算法基本一致，长度在几公里到几百公里不等，该算法是整个规划模块中最为成熟的算法</p>
+<p>特点：导航规划算法规格一个粗略的，大范围的路径，但是此路径不会考虑如何避障，也不会考虑车辆运动学的约束，一般规划的路径是不不规则的折线，导航算法一般只需要执行一次，只有遇到大范围的拥堵，施工，偏航等情况才会再次执行。</p>
+</li>
+<li><p>行为规划算法，又叫决策算法，决定车辆行驶意图的算法，对于静态障碍物，到底是左绕，还是右绕，对于动态障碍物，到底是该减速避让，还是加速超车？决策算法决定了车辆的意图，这也是规划算法中最难做的部分<br>特点：决策算法给一个车辆的行驶意图，会指导车辆该避让还是该超车，该左转还是右转，但是决策不会给具体的运动建议，例如往左转多少度，车辆加速多少。实际环境瞬息万变，因此决策算法需要较高的执行频率，一般为10Hz，决策算法需要有一定的稳定性，不允许在周围环境稳定的情况下出现“朝令夕改”的现象。</p>
+</li>
+<li><p>运动规划算法：根据决策给出的行为意图在相关的时空搜索出（或优化出）一条具有详细路径速度信息，并且满足各个约束条件的轨迹，并将此轨迹发给控制模块。此轨迹一般在几米到几十米不等<br>特点：运动规划生成的轨迹是决策规划模块的最终输出，具有详细的路径速度的信息，执行频率与决策相同，为10Hz，同样运动规划也要求具有一定的稳定性。</p>
+</li>
+</ol>
+<p>EM Planner是Apllo的经典规划算法，擅长处理复杂环境下的决策规划问题，也是Apollo默认的决策规划算法。</p>
+<p>截至到2021年，Apollo已经迭代到6.0，EM Planner 在 Apollo1.5加入，目前6.0的EM Planner 与 1.5相比已经发生了一些变化，现在6.0的EM Planner 换了个名字叫Onlane Planning </p>
+<p>介绍一个大概的目录</p>
+<p>序章： 决策规划算法概述</p>
+<h2 id="第一章：-数学基础"><a href="#第一章：-数学基础" class="headerlink" title="第一章： 数学基础"></a>第一章： 数学基础</h2><h2 id="第二章：-Apollo-EM-Planner-理论篇"><a href="#第二章：-Apollo-EM-Planner-理论篇" class="headerlink" title="第二章： Apollo EM Planner 理论篇"></a>第二章： Apollo EM Planner 理论篇</h2><h2 id="第三章：-Apollo-EM-Planner-代码篇"><a href="#第三章：-Apollo-EM-Planner-代码篇" class="headerlink" title="第三章： Apollo EM Planner 代码篇"></a>第三章： Apollo EM Planner 代码篇</h2><h2 id="终章：-决策规划算法总结。"><a href="#终章：-决策规划算法总结。" class="headerlink" title="终章： 决策规划算法总结。"></a>终章： 决策规划算法总结。</h2><h2 id="1-数学基础"><a href="#1-数学基础" class="headerlink" title="1.数学基础"></a>1.数学基础</h2><hr>
+<p>第一节 细说五次多项式</p>
+<p>五次多项式是规划论文的常客，本节将详细解释五次多项式的特殊性</p>
+<p>tip： 本节难度较大，但并不重要，听不懂记主结论即可。</p>
+<p>车辆运动规划中，一个非常重要的指标就是舒适性，在物理中，衡量舒适性的物理量为跃度，英文为Jerk</p>
+<p>Jerk的定义为：</p>
+<p>​	Jerk的定义是<br>$$<br>Jerk &#x3D; \frac{\text{d} a}{\text{d} t} \<br>a为加速度，t为时间。<br>$$<br>即Jerk是加速度的导数，Jerk的绝对值越小意味着a的变化越平缓，a的变化越平缓，也就意味着越舒适。</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816213732225.png" alt="image-20220816213732225"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816214044872.png" alt="image-20220816214044872"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816214220027.png" alt="image-20220816214220027"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816214408669.png" alt="image-20220816214408669"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816214607495.png" alt="image-20220816214607495"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816215230764.png" alt="image-20220816215230764"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816215303587.png" alt="image-20220816215303587"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220816215338081.png" alt="image-20220816215338081"></p>
+<p>二次规划</p>
+<p>自动驾驶规划目标：算出一条满足约束的最优轨道</p>
+<p>什么是最优？</p>
+<p>指标</p>
+<ol>
+<li>平滑性</li>
+<li>舒适性</li>
+<li>尽可能短，耗时少</li>
+</ol>
+<p>约束</p>
+<ol>
+<li>轨道连续性</li>
+<li>无碰撞</li>
+<li>交规</li>
+<li>车辆动力学</li>
+</ol>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817095036669.png" alt="image-20220817095036669"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817095301985.png" alt="image-20220817095301985"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817095321301.png" alt="image-20220817095321301"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817095503316.png" alt="image-20220817095503316"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817095636106.png" alt="image-20220817095636106"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817100135590.png" alt="image-20220817100135590"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817100324529.png" alt="image-20220817100324529"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817100422131.png" alt="image-20220817100422131"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817100653756.png" alt="image-20220817100653756"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817100752786.png" alt="image-20220817100752786"></p>
+<ol>
+<li>为什么要讲凸优化？<br>凸优化是最简单的，非线性的规划方法，也是目前研究的比较明白，比较彻底的规划方法，凸优化是很多复杂非线性规划方法的基石。</li>
+<li>凸优化和自动驾驶规划算法有什么联系？</li>
+</ol>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817101444470.png" alt="image-20220817101444470"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817101509582.png" alt="image-20220817101509582"></p>
+<p>静态 + 动态 避障约束空间都不是凸的。</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817101800069.png" alt="image-20220817101800069"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817101847776.png" alt="image-20220817101847776"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817101938434.png" alt="image-20220817101938434"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817102137430.png" alt="image-20220817102137430"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220817102200952.png" alt="image-20220817102200952"></p>
+<h2 id="2-直角坐标系（笛卡尔）与自然坐标系（fernet）的转换"><a href="#2-直角坐标系（笛卡尔）与自然坐标系（fernet）的转换" class="headerlink" title="2. 直角坐标系（笛卡尔）与自然坐标系（fernet）的转换"></a>2. 直角坐标系（笛卡尔）与自然坐标系（fernet）的转换</h2><h3 id="2-1（直角转自然）"><a href="#2-1（直角转自然）" class="headerlink" title="2.1（直角转自然）"></a>2.1（直角转自然）</h3><hr>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818090555566.png" alt="image-20220818090555566"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818091348930.png" alt="image-20220818091348930"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818092529072.png" alt="image-20220818092529072"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818092648062.png" alt="image-20220818092648062"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818092749577.png" alt="image-20220818092749577"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818093355763.png" alt="image-20220818093355763"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818095430838.png" alt="image-20220818095430838"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818100614174.png" alt="image-20220818100614174"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818102445017.png" alt="image-20220818102445017"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818102912875.png" alt="image-20220818102912875"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818144834039.png" alt="image-20220818144834039"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818144912623.png" alt="image-20220818144912623"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818144957196.png" alt="image-20220818144957196"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818145053302.png" alt="image-20220818145053302"></p>
+<h3 id="2-2-（自然转直角）"><a href="#2-2-（自然转直角）" class="headerlink" title="2.2 （自然转直角）"></a>2.2 （自然转直角）</h3><hr>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818153943148.png" alt="image-20220818153943148"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818154011434.png" alt="image-20220818154011434"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818154210684.png" alt="image-20220818154210684"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818154643601.png" alt="image-20220818154643601"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818155942534.png" alt="image-20220818155942534"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818160234778.png" alt="image-20220818160234778"></p>
+<p>曲率半径等于平均曲率的倒数</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818160752425.png" alt="image-20220818160752425"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818161800605.png" alt="image-20220818161800605"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818161941545.png" alt="image-20220818161941545"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162419792.png" alt="image-20220818162419792"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162542995.png" alt="image-20220818162542995"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162604822.png" alt="image-20220818162604822"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162647418.png" alt="image-20220818162647418"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162810856.png" alt="image-20220818162810856"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818162944654.png" alt="image-20220818162944654"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818163137509.png" alt="image-20220818163137509"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818163657025.png" alt="image-20220818163657025"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220818165624716.png" alt="image-20220818165624716"></p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><hr>
+<h2 id="1-决策规划仿真平台搭建"><a href="#1-决策规划仿真平台搭建" class="headerlink" title="1 . 决策规划仿真平台搭建"></a>1 . 决策规划仿真平台搭建</h2><ul>
+<li><p>需要用到的软件：</p>
+<ol>
+<li>vs2019</li>
+<li>carsim2019.1</li>
+<li>matlabr2020a</li>
+<li>prescan8.5.0</li>
+</ol>
+</li>
+<li><p>搭建中可能出现的问题：</p>
+<ol>
+<li>matlab异常，需要重新安装，</li>
+<li>carsim在打开之前一定要记得重启</li>
+<li>修改prescan的.dat文件为当前年份</li>
+<li>在进行仿真的过程中碰到问题，一定要线看评论区的6个问题</li>
+</ol>
+</li>
+<li><p>Q1:prescan安装了，但是找不到Demo_Carsim3D<br>A1:这个文件夹是我自己建立的不是prescan自带的，所以你们安装自然是没有的(这是我的错误，向大家道歉)，所以以后视频里所有的操作都应该等价转化为视频07:27倒数第四个文件夹Demo_PrescanCarsim3D，包括Carsim输入输出模块的粘贴也要用Demo_PrescanCarsim3D下的模型</p>
+<p>Q2:Carsim2019.0与prescan关联报错there were unbalanced () from the expression<br>A2:(此问题由@石榴_SHILIU解决)可以尝试在Export: Outputs右下角Optional equations添加<br>DEFINE_OUTPUT mod1_L1 &#x3D; 0; - ; mod1_L1<br>DEFINE_OUTPUT mod2_L1 &#x3D; 0; - ; mod2_L1<br>EQ_OUT MOD1_L1 &#x3D; (ABS(FY_L1)&#x2F;FZ_REF(1,1))*MUY_L1;<br>EQ_OUT MOD2_L1 &#x3D; SIN(MIN(ABS(ALPHL_L1), 15&#x2F;DR))*ABS(VXCENL1);</p>
+<p>Q3: prescan的动力学模型中，点进去里面的Carsim S-Funtion 图标显示Solver_SF not found<br>A3:请确定matlab是否添加了路径X:\Program Files (x86)\CarSim2019.1_Prog\Programs\solvers(X为你carsim安装的盘符，默认是C盘)，这个路径就是Solver_SF的路径，如果不知道怎么在matlab添加路径请搜索“matlab如何设置路径”，如果做了这一切还是不行，请按照视频的方式，看改名字把Carsim S-function2改成Carsim S-function，或者把Carsim S-function改成Carsim S-function2，如果还是不行，双击Carsim S-function这个s函数，在source block中，改Solver_SF&#x2F;Carsim S-function的名字Q4:carsim破解报错The hostid of this system does not match the hostid<br>A4:请打开X:\Program Files (x86)\CarSim2019.1_Prog\Programs(X默认为C盘),运行HostID.exe，查看你电脑的HostID，以BIA开头，一共有两个，选择一个即可，在用记事本打开破解文件MSCLIC_SSQ.dat 查找此文件的HOST ID&#x3D; BIAXXXXXX，把BIAXXXXXX替换成你自己电脑的HostID，因为要替换的HostID不止一处，所以要选择全部替换，即可解决。</p>
+<p>Q5:一切准备就绪之后，模型运行报错 ”函数或变量vs_state无法识别“<br>A5:在工作区加上这个变量即可，具体操作为在matlab的命令行输入vs_state&#x3D;-1,回车，然后运行，但是他还是会报错说”函数或变量StopMode无法识别“，然后再在命令行输入StopMode&#x3D;-1，即可运行，vs_state和StopMode参数的具体含义可以搜索carsim的帮助文档，在这个系列这两个参数我们用不着</p>
+<p>Q6:顺利解决所有问题，但是没跑出来视频中的曲线,而且仿佛车不受控制<br>A6:请检查carsim的纵向和横向控制是否关掉，carsim可能自带一些初速度和转向的设置，在仿真时请把他们都关掉</p>
+</li>
+</ul>
+<h2 id="2-参考线模块"><a href="#2-参考线模块" class="headerlink" title="2. 参考线模块"></a>2. 参考线模块</h2><ul>
+<li><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824163930238.png" alt="image-20220824163930238"></li>
+</ul>
+<p>参考线是解决导航路径过长，不平滑的问题</p>
+<p>过长的路径不利于坐标转换（找匹配点，计算S）</p>
+<p>过长的路径，障碍物投影可能不唯一</p>
+<p>不平滑</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824164843840.png" alt="image-20220824164843840"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824165333712.png" alt="image-20220824165333712"></p>
+<p>每个规划周期内，找到车在导航路径上的投影点，以投影点为坐标原点，往后取30米，往前取150米范围内的点做平滑，平滑后的点的集合称为参考线。</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824165658378.png" alt="image-20220824165658378"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824170648152.png" alt="image-20220824170648152"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824171509013.png" alt="image-20220824171509013"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172129990.png" alt="image-20220824172129990"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172253718.png" alt="image-20220824172253718"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172511644.png" alt="image-20220824172511644"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172531783.png" alt="image-20220824172531783"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172543910.png" alt="image-20220824172543910"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172724325.png" alt="image-20220824172724325"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824172825467.png" alt="image-20220824172825467"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824173009845.png" alt="image-20220824173009845"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824173109582.png" alt="image-20220824173109582"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824173542194.png" alt="image-20220824173542194"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824173852969.png" alt="image-20220824173852969"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824174032556.png" alt="image-20220824174032556"></p>
+<p>车在全局路径上的投影，</p>
+<h2 id="3-参考线模块（中）"><a href="#3-参考线模块（中）" class="headerlink" title="3.参考线模块（中）"></a>3.参考线模块（中）</h2><hr>
+<p>平滑算法 在Appollo 中叫做 Fem smoother  （finite element method）</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824194319851.png" alt="image-20220824194319851"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824194504004.png" alt="image-20220824194504004"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824194602251.png" alt="image-20220824194602251"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824194726144.png" alt="image-20220824194726144"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824195425119.png" alt="image-20220824195425119"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824195650286.png" alt="image-20220824195650286"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200006216.png" alt="image-20220824200006216"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200036890.png" alt="image-20220824200036890"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200126163.png" alt="image-20220824200126163"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200330776.png" alt="image-20220824200330776"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200521666.png" alt="image-20220824200521666"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824200611603.png" alt="image-20220824200611603"></p>
+<p>一般编程语言不支持可变矩阵的二次规划的</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824201728367.png" alt="image-20220824201728367"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824201749814.png" alt="image-20220824201749814"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824201823754.png" alt="image-20220824201823754"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824201927824.png" alt="image-20220824201927824"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220824202118371.png" alt="image-20220824202118371"></p>
+<h2 id="4-路径决策算法：-动态规划"><a href="#4-路径决策算法：-动态规划" class="headerlink" title="4. 路径决策算法： 动态规划"></a>4. 路径决策算法： 动态规划</h2><hr>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100001522.png" alt="image-20220825100001522"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100105968.png" alt="image-20220825100105968"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100227216.png" alt="image-20220825100227216"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100337209.png" alt="image-20220825100337209"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100532253.png" alt="image-20220825100532253"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100603550.png" alt="image-20220825100603550"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100620951.png" alt="image-20220825100620951"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825100926366.png" alt="image-20220825100926366"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825101023916.png" alt="image-20220825101023916"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825101123105.png" alt="image-20220825101123105"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825103741561.png" alt="image-20220825103741561"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825103814475.png" alt="image-20220825103814475"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825103903709.png" alt="image-20220825103903709"></p>
+<p>如何在凸空间优化出最终解？ 二次规划</p>
+<p>如何在离散空间上找到粗解？ 动态规划</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825104450342.png" alt="image-20220825104450342"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825104545803.png" alt="image-20220825104545803"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825104715775.png" alt="image-20220825104715775"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825104859034.png" alt="image-20220825104859034"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825105012388.png" alt="image-20220825105012388"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825105944584.png" alt="image-20220825105944584"> </p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825110204763.png" alt="image-20220825110204763"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825110440351.png" alt="image-20220825110440351"> </p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825110527431.png" alt="image-20220825110527431"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825110700517.png" alt="image-20220825110700517"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825110823018.png" alt="image-20220825110823018"></p>
+<h2 id="5-自动驾驶决策规划算法第二章第二节（中）：-控制接口，轨迹拼接"><a href="#5-自动驾驶决策规划算法第二章第二节（中）：-控制接口，轨迹拼接" class="headerlink" title="5. 自动驾驶决策规划算法第二章第二节（中）： 控制接口，轨迹拼接"></a>5. 自动驾驶决策规划算法第二章第二节（中）： 控制接口，轨迹拼接</h2><hr>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825152431086.png" alt="image-20220825152431086"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825152549278.png" alt="image-20220825152549278"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825152650938.png" alt="image-20220825152650938"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825152854927.png" alt="image-20220825152854927"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825153159422.png" alt="image-20220825153159422"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825153317352.png" alt="image-20220825153317352"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825153540924.png" alt="image-20220825153540924"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825153908613.png" alt="image-20220825153908613"></p>
+<p>  <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825155608999.png" alt="image-20220825155608999"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220825165645822.png" alt="image-20220825165645822"></p>
+<h2 id="6-自动驾驶决策规划算法——二次规划"><a href="#6-自动驾驶决策规划算法——二次规划" class="headerlink" title="6. 自动驾驶决策规划算法——二次规划"></a>6. 自动驾驶决策规划算法——二次规划</h2><p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830102018878.png" alt="image-20220830102018878"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830103010873.png" alt="image-20220830103010873"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830103154411.png" alt="image-20220830103154411"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830103253824.png" alt="image-20220830103253824"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830103640271.png" alt="image-20220830103640271"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830103846209.png" alt="image-20220830103846209"></p>
+<p>这样使二次规划的求解的几率大大增加（因为粗解在凸空间内部，所以该凸空间的“扭曲”程度至少有粗解兜底。）大大缓解了基于人为规则的决策所造成的凸空间扭曲情况</p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830113129985.png" alt="image-20220830113129985"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830113330257.png" alt="image-20220830113330257"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830140611784.png" alt="image-20220830140611784"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830140752764.png" alt="image-20220830140752764"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830140940664.png" alt="image-20220830140940664"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830141028205.png" alt="image-20220830141028205"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830150023855.png" alt="image-20220830150023855"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830150011017.png" alt="image-20220830150011017"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830150124608.png" alt="image-20220830150124608"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830151851433.png" alt="image-20220830151851433"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830152318480.png" alt="image-20220830152318480"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830154510016.png" alt="image-20220830154510016"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830154650391.png" alt="image-20220830154650391"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830154726027.png" alt="image-20220830154726027"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830154943891.png" alt="image-20220830154943891"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830155018130.png" alt="image-20220830155018130"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830155423046.png" alt="image-20220830155423046"></p>
+<p><img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830155744678.png" alt="image-20220830155744678"></p>
+<p> <img src="C:\Users\lzq\AppData\Roaming\Typora\typora-user-images\image-20220830160430711.png" alt="image-20220830160430711"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://lzq04.github.io/blog1">刘再庆</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lzq04.github.io/blog1/post/0.html">http://lzq04.github.io/blog1/post/0.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lzq04.github.io/blog1" target="_blank">lzq的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog1/post/7a6a6b5a.html"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/blog1/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">测试文章</div></div></a></div><div class="next-post pull-right"><a href="/blog1/post/4a17b156.html"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/blog1/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的第一遍博客</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/blog1/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">刘再庆</div><div class="author-info__description">hope is a good thing, maybe the best of things and no good thing ever death</div></div><div class="card-info-data site-data is-center"><a href="/blog1/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/blog1/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/blog1/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">决策规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">第一章： 数学基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A-Apollo-EM-Planner-%E7%90%86%E8%AE%BA%E7%AF%87"><span class="toc-number">1.2.</span> <span class="toc-text">第二章： Apollo EM Planner 理论篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A-Apollo-EM-Planner-%E4%BB%A3%E7%A0%81%E7%AF%87"><span class="toc-number">1.3.</span> <span class="toc-text">第三章： Apollo EM Planner 代码篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%A0%EF%BC%9A-%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E3%80%82"><span class="toc-number">1.4.</span> <span class="toc-text">终章： 决策规划算法总结。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.5.</span> <span class="toc-text">1.数学基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%88%E7%AC%9B%E5%8D%A1%E5%B0%94%EF%BC%89%E4%B8%8E%E8%87%AA%E7%84%B6%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%88fernet%EF%BC%89%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.6.</span> <span class="toc-text">2. 直角坐标系（笛卡尔）与自然坐标系（fernet）的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%EF%BC%88%E7%9B%B4%E8%A7%92%E8%BD%AC%E8%87%AA%E7%84%B6%EF%BC%89"><span class="toc-number">1.6.1.</span> <span class="toc-text">2.1（直角转自然）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%EF%BC%88%E8%87%AA%E7%84%B6%E8%BD%AC%E7%9B%B4%E8%A7%92%EF%BC%89"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.2 （自然转直角）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%92%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">1 . 决策规划仿真平台搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%82%E8%80%83%E7%BA%BF%E6%A8%A1%E5%9D%97"><span class="toc-number">2.2.</span> <span class="toc-text">2. 参考线模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%82%E8%80%83%E7%BA%BF%E6%A8%A1%E5%9D%97%EF%BC%88%E4%B8%AD%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">3.参考线模块（中）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%B7%AF%E5%BE%84%E5%86%B3%E7%AD%96%E7%AE%97%E6%B3%95%EF%BC%9A-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">2.4.</span> <span class="toc-text">4. 路径决策算法： 动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%AC%AC%E4%BA%8C%E8%8A%82%EF%BC%88%E4%B8%AD%EF%BC%89%EF%BC%9A-%E6%8E%A7%E5%88%B6%E6%8E%A5%E5%8F%A3%EF%BC%8C%E8%BD%A8%E8%BF%B9%E6%8B%BC%E6%8E%A5"><span class="toc-number">2.5.</span> <span class="toc-text">5. 自动驾驶决策规划算法第二章第二节（中）： 控制接口，轨迹拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E4%BA%8C%E6%AC%A1%E8%A7%84%E5%88%92"><span class="toc-number">2.6.</span> <span class="toc-text">6. 自动驾驶决策规划算法——二次规划</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog1/post/7a6a6b5a.html" title="测试文章"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/blog1/img/404.jpg'" alt="测试文章"/></a><div class="content"><a class="title" href="/blog1/post/7a6a6b5a.html" title="测试文章">测试文章</a><time datetime="2022-08-31T03:23:12.000Z" title="发表于 2022-08-31 11:23:12">2022-08-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog1/post/0.html" title="决策规划模块"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/blog1/img/404.jpg'" alt="决策规划模块"/></a><div class="content"><a class="title" href="/blog1/post/0.html" title="决策规划模块">决策规划模块</a><time datetime="2022-08-31T03:08:03.333Z" title="发表于 2022-08-31 11:08:03">2022-08-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog1/post/4a17b156.html" title="我的第一遍博客"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/blog1/img/404.jpg'" alt="我的第一遍博客"/></a><div class="content"><a class="title" href="/blog1/post/4a17b156.html" title="我的第一遍博客">我的第一遍博客</a><time datetime="2022-08-30T16:52:32.428Z" title="发表于 2022-08-31 00:52:32">2022-08-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 刘再庆</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog1/js/utils.js"></script><script src="/blog1/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
